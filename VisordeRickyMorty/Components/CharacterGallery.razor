@@ -1,5 +1,5 @@
 ﻿@using VisordeRickyMorty.Models;
-<h3>Tarjeta de personaje:</h3>
+<h4>Tarjeta de personaje:</h4>
 <div class="card shadow-sm" style="width: 18rem;">
 	<img src="@character.Image" class="card-img-top" alt="@character.Name" />
 	<div class="card-body text-center">
@@ -7,17 +7,32 @@
 		<p class="card-text text-muted">Estado: @character.Status</p>
 		<p class="card-text text-muted">Especie: @character.Species</p>
 		<div class="d-flex justify-content-center gap-2 mb-2">
-			<button @onclick="Like">Like</button>
-			<button @onclick="Dislike">Dislike</button>
+			<button class="btn btn-sucess btn-sm" @onclick="Like">Like</button>
+			<button class="btn btn-danger btn-sm" @onclick="Dislike">Dislike</button>
 		</div>
-		<p class="fw-bold">Puntaje: @Score</p>
+		<div class="d-flex justify-content-around text-muted small">
+			<span>@Likes</span>
+			<span>@Dislikes</span>
+		</div>
+
+		<p class="fw-bold mt-2">Puntaje: @Score</p>
 	</div>
 </div>
 @code {
 	[Parameter] public Character character { get; set; }
 	private int Score { get; set; } = 0;
-	void Like() => Score++;
-	void Dislike() => Score--;
+	private int Likes { get; set; } = 0;
+	private int Dislikes { get; set; } = 0;
+	void Like()
+	{
+		Likes++;
+		Score++;
+	}
+	void Dislike()
+	{
+		Dislikes++;
+		Score++;
+	}
 
 
 }
