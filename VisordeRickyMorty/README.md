@@ -7,7 +7,7 @@ Este proyecto es parte de una prueba tecnica para practicantes de desarrollo de 
 
 //¿COMO EJECUTAR?\\
 
-1. Clona el repositorio utilizando el siguiente link = https://github.com/Danimart22/Visor-de-Rick-y-Morty.git
+1. Clona el repositorio utilizando el siguiente link = https://github.com/Danimart22/PruebaTecnicaQbiq.git
 
 2. Abre el proyecto en Visual Studio 2022
 
