@@ -33,6 +33,12 @@ deserializa la propiedad "results" y así nos da la lista de los personajes.
 //FUNCIONALIDAD ADICIONALES\\
 • Implementación de Bootstrap
 • Responsive design
+• Filtrado por el estado
 
 //DECISIONES TÉCNICAS\\
+• Se eligió Blazor WebAssembly para demostrar las habilidades en C# y en .net framework.
+• Se uso HttpClient con inyección de dependencias ya que permite un consumo limpio de la API.
+• Bootstrap se agregó vía CDN para un estilo rapido y profesional, sin sobrecargar el proyecto.
+• Se utilizó una separación clara entre modelos, componentes y servicios para la identificación de errores facilmente y para cumplir con la programación por capas.
+
 

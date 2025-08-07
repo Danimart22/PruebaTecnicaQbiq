@@ -1,0 +1,4 @@
+﻿//PROPUESTA DE MEJORA\\
+•Persistencia de los puntajes (Likes, Dislikes) mediante un guardado local o un guardado externo.
+•Busqueda de personajes por nombre (buscar Rick y que aparezcan solamente los que tengan Rick en su nombre).
+•Filtrado por especies

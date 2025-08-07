@@ -8,6 +8,17 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
+	<h3>Filtrar personajes</h3>
+	<div class="col-md-4"> 
+		<label>Estado: </label>
+		<select class="form-select" @bind="selectedStatus">
+			<option value="">Todos</option>
+			@foreach (var status in statusList)
+			{
+				<option value="@status">@status</option>
+			}
+		</select>
+	</div>
 	@if (!string.IsNullOrEmpty(errorMessage))
 	{
 		<p>Error: @errorMessage</p>
@@ -20,7 +31,7 @@
 	{
 		<div class="container mt-4">
 			<div class="row g-4 justify-content-center">
-				@foreach (var Character in characters)
+				@foreach (var Character in FilterCharacters)
 				{
 					<div class="col col-lg-3 d-flex justify-content-center">
 						<CharacterGallery character="Character" />
@@ -33,6 +44,11 @@
 </body>
 @code {
 	private List<Character> characters = new();
+	private string selectedSpecies = "";
+	private string selectedStatus = "";
+	//private List<string> speciesList = new();
+	private List<string> statusList = new();
+	private IEnumerable<Character> FilterCharacters => characters.Where(chara => string.IsNullOrEmpty(selectedSpecies) || chara.Species == selectedSpecies).Where(chara => string.IsNullOrEmpty(selectedStatus) || chara.Status == selectedStatus);
 	private bool isLoading = true;
 	private string errorMessage;
 	protected override async Task OnInitializedAsync()
@@ -40,6 +56,8 @@
 		try
 		{
 			characters = await characterService.GetCharactersAsync();
+			//speciesList = characters.Select(chara => chara.Species).Where(spec => !string.IsNullOrWhiteSpace(spec)).Distinct().OrderBy(spec => spec).ToList();
+			statusList = characters.Select(chara => chara.Status).Distinct().ToList();
 		}
 		catch (Exception ex)
 		{
